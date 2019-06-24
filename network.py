@@ -9,6 +9,7 @@ class Network:
         self.weight = np.asarray([np.asarray([np.asarray([np.random.randn() for _ in range(layers[i-1])]) for _ in range(layers[i])]) for i in range(1, len(layers))])
 
     def forward_feed(self, activation):
+        activation = sigmoid(activation)
         for weight_set, bias_set in zip(self.weight, self.bias):
             activation = sigmoid(np.matmul(weight_set, activation) + bias_set)
         return activation
